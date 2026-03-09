@@ -31,4 +31,3 @@ def home():
     ]
     return render_template("index.html", produit_flask=produit_dict)
 
-app.run(debug=True)
