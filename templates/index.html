@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="GOLDEN SHOP - Votre boutique en ligne pour des produits exceptionnels">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <title>GOLDEN SHOP</title>
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <!-- Logo -->
+            <a href="/" class="logo">
+                <img src="{{ url_for('static', filename='images/shopping_jc.jpg') }}" alt="Logo GOLDEN SHOP" class="logo-img">
+                <span class="logo-text">GOLDEN SHOP</span>
+            </a>
+            
+            <!-- Navigation -->
+            <div class="nav-right">
+                <div class="cart-icon" title="Panier">
+                    <img src="{{ url_for('static', filename='images/pagnie_jc.png') }}" alt="Panier">
+                </div>
+                <a href="https://chat.whatsapp.com/DAaXEnnrdWIF2nOfyC6nVL?mode=gi_t" class="btn-buy">
+                    <i class="fas fa-shopping-bag"></i>
+                    Acheter
+                </a>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bienvenue sur <span>GOLDEN SHOP</span></h1>
+            <p>Découvrez nos produits exceptionnels à prix abordables ! Qualité garantie et livraison rapide.</p>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <main>
+        <div class="section-title">
+            <h2>Nos Produits</h2>
+        </div>
+        
+        <div class="products-grid">
+            {% for produit in produit_flask %}
+            <div class="product-card">
+                <!-- Badge (optionnel - peut être ajouté dynamiquement) -->
+                {% if produit.prix > 50 %}
+                <span class="badge">Promo</span>
+                {% endif %}
+                
+                <!-- Image -->
+                <div class="product-image">
+                    <img src="{{ url_for('static', filename='images/' ~ produit.images) }}" 
+                        alt="{{ produit.nom }}"
+                        loading="lazy">
+                    <div class="product-overlay">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                </div>
+                
+                <!-- Info -->
+                <div class="product-info">
+                    <span class="product-category">Chausseurs & Accessoires</span>
+                    <h3 class="product-name">{{ produit.nom }}</h3>
+                    <p class="product-price">{{ produit.prix }} $</p>
+                    
+                    <!-- Bouton WhatsApp -->
+                    <a href="https://wa.me/243973051926?text=Bonjour%20je%20veux%20acheter%20{{ produit.nom }}%20au%20prix%20de%20{{ produit.prix }}$" 
+                       class="btn-whatsapp" 
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i>
+                        Commander sur WhatsApp
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <!-- Brand -->
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <img src="{{ url_for('static', filename='images/shopping_jc.jpg') }}" alt="Logo" class="logo-img">
+                        <span class="logo-text">GOLDEN SHOP</span>
+                    </a>
+                    <p>Votre boutique en ligne de confiance pour des produits de qualité à prix imbattables. Satisfaction garantie.</p>
+                </div>
+                
+                <!-- Liens rapides -->
+                <div class="footer-links">
+                    <h4>Liens Rapides</h4>
+                    <ul>
+                        <li><a href="#">Accueil</a></li>
+                        <li><a href="#produits">Produits</a></li>
+                        <li><a href="#">À propos</a></li>
+                        <li><a href="#">Conditions générales</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact -->
+                <div class="footer-contact">
+                    <h4>Contact</h4>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:magellanbastese@gmail.com">magellanbastese@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-globe"></i>
+                        <a href="https://philippe-website.github.io/portf_philippe/" target="_blank">Mon Portfolio</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <a href="https://wa.me/243973051926" target="_blank">+243 973 051 926</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>&copy; 2026 GOLDEN SHOP. Tous droits réservés.</p>
+                <div class="social-links">
+                    <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            
+            <!-- Developer Info -->
+            <div style="text-align: center; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+                <p style="color: var(--text-muted); font-size: 0.9rem;">
+                    Développé avec ❤️ par <strong style="color: var(--gold);">Philippe Kakese Nkulu</strong>
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
